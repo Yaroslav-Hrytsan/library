@@ -1,0 +1,43 @@
+.header {
+  height: 100px    ;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: var(--bg);
+}
+.logoBlock{
+    display: flex;
+    flex-direction: column;
+    
+}
+.quote {
+    margin-top: 2px;
+    color: #ccc;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.search {
+  width: 400px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.themeBtn,
+.loginBtn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
