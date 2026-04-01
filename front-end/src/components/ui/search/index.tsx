@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './index.module.css'
-import { SearchContext } from '../../../context/searchContext'
+import { SearchContext } from '../../../context/SearchContext'
 
 const Search = () => {
     const { valueInput, setValueInput } = React.useContext(SearchContext);

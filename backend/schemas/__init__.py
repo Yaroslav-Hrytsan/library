@@ -1,3 +1,3 @@
-from .bookSchema import BookUpdate, BookOut, BookCreate
-from .authorSchema import AuthorOut, AuthorBase, AuthorCreate
-from .categorySchema import CategoryBase, CategoryCreate, CategoryOut
+from .BookSchema import BookBase, BookCreate, BookUpdate, BookOut
+from .AuthorSchema import AuthorBase, AuthorCreate, AuthorUpdate, AuthorOut
+from .CategorySchema import CategoryBase, CategoryCreate, CategoryUpdate, CategoryOut

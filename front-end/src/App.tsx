@@ -3,7 +3,7 @@ import Layout from './components/layout'
 import HomePage from './components/pages/homePage'
 import LoginPage from './components/pages/loginPage'
 import BookPage from './components/pages/bookPage'
-import { SearchProvider } from './context/searchContext'
+import { SearchProvider } from './context/SearchContext'
 
 function App() {
 

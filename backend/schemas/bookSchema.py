@@ -7,7 +7,7 @@ class BookBase(BaseModel):
 class BookCreate(BookBase):
     author_id: int
 
-class BookUpdate(BaseModel):
+class BookUpdate(BookBase):
     title: str| None = None
     year: int | None = None
     author_id: int | None = None

@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker, declarative_base
 
 # database.py'
 DATABASE_URL = "sqlite:///./library.db"
@@ -8,7 +8,7 @@ DATABASE_URL = "sqlite:///./library.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 # створення сесії
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=True, autoFlush=True, bind=engine)
 
 # створення базового класу
 Base = declarative_base()

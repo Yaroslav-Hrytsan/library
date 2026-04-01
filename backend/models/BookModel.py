@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from backend.database import Base
-from .modelBook_category import book_category
+from .BookCategoryModel import book_category
 
 class Book(Base):
     __tablename__ = "books"

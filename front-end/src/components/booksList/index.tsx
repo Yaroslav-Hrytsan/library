@@ -2,14 +2,12 @@ import React from 'react'
 import { books } from '../../data/books'
 import { Link, useParams } from 'react-router-dom'
 import { categoryBooks } from '../../data/categoriesBooks'
-import { SearchContext } from '../../context/searchContext'
+import { SearchContext } from '../../context/SearchContext'
 import { useDebounce } from '../../hooks/DebounceHooks'
 
 const BooksList: React.FC = () => {
   const [booksList, setBooksList] = React.useState(books) 
   const {id} = useParams<{id?: string}>()
-  
-  
 
   const {valueInput} = React.useContext(SearchContext)
   const debouncedValue = useDebounce( {valueSearch: valueInput, time: 400} )
@@ -17,8 +15,6 @@ const BooksList: React.FC = () => {
   React.useEffect(() => {
     const filteredBooks = books.filter( book => {
       const booksByCategory = id && id !== "all-books" ? book.category === id : books
-
-      
       const booksBySearch = 
       book.title.toLowerCase().includes(normalizeSearch) ||
       book.author.toLowerCase().includes(normalizeSearch) ||
