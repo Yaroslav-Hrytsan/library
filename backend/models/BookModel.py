@@ -13,5 +13,6 @@ class Book(Base):
     author_id = Column(Integer, ForeignKey("authors.id"))
     author = relationship("Author", back_populates="books")
     
-    categories = relationship("Category", secondary=book_category, back_populates="books"
+    # category_id = Column(String, ForeignKey("categories.id"))
+    # categories = relationship("Category", secondary=book_category, back_populates="books"
     )

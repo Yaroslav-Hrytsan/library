@@ -2,8 +2,8 @@ from sqlalchemy.orm import Session
 from backend.schemas import BookCreate, BookUpdate
 from backend.models import Book
 
-def create_book(db: Session, title: str, author_id: int, category_id: str, year: int):
-    new_book = Book(title=title, author_id=author_id, category_id=category_id, year=year)
+def create_book(db: Session, book: BookCreate):
+    new_book = Book(title=book.title, year=book.year, author_id=book.author_id) # category_id=book.category_id))
     db.add(new_book)
     db.commit()
     db.refresh(new_book)
@@ -19,15 +19,16 @@ def get_books(db: Session, author_id: int | None=None, category_id: int | None =
         books = books.filter(Book.year == year)
     return books.all()
 
-def update_book(db: Session, book_id: int, title: str, category_id: str, author_id: str, year: int):
-    book = db.query(Book).filter(Book.id == book_id).first()
-    if book is None:
+def update_book(db: Session, book_id: int, book: BookUpdate):
+    db_book = db.query(Book).filter(Book.id == book_id).first()
+    if db_book is None:
         return None
-    book.title= title
-    book.year= year
-    book.author_id= author_id
-    book.categories= category_id
-    return book
+    update_data = book.dict(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(db_book, key, value)
+    db.commit()
+    db.refresh(db_book)
+    return db_book
 
 def delete_book(db: Session, book_id: int):
     book = db.query(Book).filter(Book.id == book_id).first()
@@ -35,7 +36,7 @@ def delete_book(db: Session, book_id: int):
         return None
     db.delete(book)
     db.commit()
-    return book
+    return {"message": "Book deleted successfully"}
 
 # def search_books(db: Session, search_value: str):
 #     return db.query(Book).join(Author).join(Category).filter(

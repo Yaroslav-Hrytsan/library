@@ -16,7 +16,7 @@ return (
     <header className={s.header}>
       <div className={s.logoBlock}  >
         <Link to='/'><span className={s.logo}>📚 Library</span></Link>
-        <span className={s.quote}> Книга - одна з найкращих винаходів </span>
+        <span className={s.quote}> Книги - це ...</span>
       </div>
       <Search/>
 

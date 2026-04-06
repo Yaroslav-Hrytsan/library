@@ -4,7 +4,7 @@ import Header from './header/index'
 import { Outlet } from 'react-router-dom'
 import Sidebar from './sidebar'
 
-const Layout: React.FC = () => {
+const Layout: React.FC = () => { 
   return (
     <div className={s.wrapper}>
       <Header />

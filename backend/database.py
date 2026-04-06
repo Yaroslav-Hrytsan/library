@@ -8,7 +8,7 @@ DATABASE_URL = "sqlite:///./library.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
 
 # створення сесії
-SessionLocal = sessionmaker(autocommit=True, autoFlush=True, bind=engine)
+SessionLocal = sessionmaker(bind=engine, autoflush=True, autocommit=False)
 
 # створення базового класу
 Base = declarative_base()

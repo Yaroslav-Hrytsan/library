@@ -11,19 +11,17 @@ router = APIRouter(
 )
 
 @router.post("/", response_model=BookOut)
-def create_book_route(title: str, year: int, author_id: int, category_id, db: Session = Depends(get_db)):
-    return create_book(db, title, year, author_id, category_id, )
+def create_book_route(book: BookCreate, db: Session = Depends(get_db)):
+    return create_book(db, book)
 
 @router.get("/", response_model=list[BookOut])
-def read_books_route(db: Session = Depends(get_db), author_id: int | None = None, category_id: str | None = None, year: int | None = None):
-    books= get_books(db, author_id, category_id, year)
-    if not books:
-        return HTTPException(status_code=404, detail="Book not found")
+def read_books_route(db: Session = Depends(get_db), author_id: int | None = None, year: int | None = None):
+    books = get_books(db, author_id, year)
     return books
 
 @router.put("/{book_id}", response_model=BookOut)
-def update_book_route(book_id:int, title: str | None = None, year: int | None = None, author_id: int | None = None, category_id: str | None = None, db: Session=Depends(get_db)):
-    book = update_book(db, book_id, category_id, author_id, year, title)
+def update_book_route(book_id:int, book: BookUpdate, db: Session=Depends(get_db)):
+    book = update_book(db, book_id, book)
     if not book:
         raise HTTPException(status_code=404, detail="Book not found")
     return book

@@ -6,6 +6,9 @@ class AuthorBase(BaseModel):
 class AuthorCreate(AuthorBase):
     pass
 
+class AuthorUpdate(BaseModel):
+    pass
+
 class AuthorOut(AuthorBase):
     id: int
     class Config:

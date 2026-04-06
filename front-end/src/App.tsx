@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
     <SearchProvider>
     <Routes>
-        <Route path="/"element={<Layout/>}>
+        <Route path="/" element={<Layout/>}>
           <Route index element={<HomePage/>}/>
           <Route path='category/:id' element={<HomePage/>}/>
           <Route path='book/:id' element={<BookPage/>}/>
