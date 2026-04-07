@@ -15,8 +15,8 @@ def create_book_route(book: BookCreate, db: Session = Depends(get_db)):
     return create_book(db, book)
 
 @router.get("/", response_model=list[BookOut])
-def read_books_route(db: Session = Depends(get_db), author_id: int | None = None, year: int | None = None):
-    books = get_books(db, author_id, year)
+def read_books_route(db: Session = Depends(get_db), author_id: int | None = None, year: int | None = None, category_id: str | None = None):
+    books = get_books(db, author_id, year, category_id)
     return books
 
 @router.put("/{book_id}", response_model=BookOut)

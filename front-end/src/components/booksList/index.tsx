@@ -3,12 +3,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { createBook, getBooks } from '../../api/books'
 import { books } from '../../data/books'
-
-const bookFirst = {
-  title: "Angel",
-  year: 2020,
-  author_id: 1
-};
+import { resolveElements } from 'motion';
 
 
 const BooksList: React.FC<{ categoryTitle: string }> = ( ) => {
@@ -19,17 +14,11 @@ const BooksList: React.FC<{ categoryTitle: string }> = ( ) => {
   // const debouncedValue = useDebounce( {valueSearch: valueInput, time: 400} )
   // const normalizeSearch = debouncedValue.trim().toLowerCase()
 
-  useEffect(() => {
-    createBook(bookFirst).then(res => {
-      console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
-    
+  useEffect(() => {  
     getBooks().then(res => {
       setBooksList(res)
-    })
-
+      console.log(res)
+   })
   }, [])
   console.log(booksList)
 

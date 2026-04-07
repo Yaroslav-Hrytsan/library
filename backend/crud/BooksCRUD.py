@@ -3,13 +3,18 @@ from backend.schemas import BookCreate, BookUpdate
 from backend.models import Book
 
 def create_book(db: Session, book: BookCreate):
-    new_book = Book(title=book.title, year=book.year, author_id=book.author_id) # category_id=book.category_id))
+    new_book = Book(
+        title=book.title, 
+        year=book.year,
+        author_id=book.author_id,
+        category_id=book.category_id)
     db.add(new_book)
     db.commit()
     db.refresh(new_book)
     return new_book
 
-def get_books(db: Session, author_id: int | None=None, category_id: int | None = None, year: int | None = None):
+# category_id: int | None = None
+def get_books(db: Session, author_id: int | None=None,  year: int | None = None, category_id: int | None = None):
     books = db.query(Book)
     if author_id:
         books = books.filter(Book.author_id == author_id)
